@@ -1,0 +1,42 @@
+TASK:
+  NAME: CIFAR10
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  NAME: CIFAR10
+  TRAIN: 
+    PATH: ('/home/extend/datasets/CIFAR-10/train_valid_test/train',)
+    IMG_SIZE: 64
+    BATCH_SIZE: 128
+  TEST: 
+    PATH: ('/home/extend/datasets/CIFAR-10/train_valid_test/valid',)
+    IMG_SIZE: 64
+    BATCH_SIZE: 128
+INPUT:
+  NUM_CHANNELS: 3
+  NORM_MEAN: [0.4914, 0.4822, 0.4465]
+  NORM_STD: [0.2023, 0.1994, 0.2010]
+OUTPUT:
+  NUM_CHANNELS: 10
+MODEL:
+  NAME: ResNet18
+  DEVICES: [0, 1]
+LOSS:
+  NAME: CrossEntropy
+SOLVER:
+  NAME: SGD
+  NUM_EPOCHS: 20 
+  BASE_LR: 0.001
+  WEIGHT_DECAY: 0.0005 
+  BIAS_LR_FACTOR: 2.0
+  BIAS_DECAY: 0.0
+  MOMENTUM: 0.9
+  TEST_PERIOD: 3
+TEST:
+  WEIGHT: ''
+RECORD:
+  OUTPUT_DIR: /home/vmice/result
+  RESULT_DIR: ''
+  LOG_PERIOD: 32
+OPTION:
+  SEED: 223
