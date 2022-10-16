@@ -41,6 +41,7 @@ def main():
     cfg.freeze()
 
     train()
+    logger.info("This result was saved to: {}".format(cfg.RECORD.RESULT.DIR))
 
 if __name__ == "__main__":
     main()
